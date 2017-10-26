@@ -34,7 +34,8 @@ app.get("/Login",function(req,res){
 });
 
 app.post('/Login', function (req, res) {
-	req.session.user_id = "Admin";//Guardar dato en variable de sesion
-   console.log('Ingreso con: '+ req.body.Nombre + req.body.Contra );
-   res.render("login");
+    req.session.user_id = "Admin";//Guardar dato en variable de sesion
+    console.log('Ingreso con: '+ req.body.user + req.body.pass );
+    console.log(req.body);
+    res.render("login");
 });
