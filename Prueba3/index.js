@@ -119,6 +119,6 @@ app.get("/Lugar",function(req,ras){
 });
 
 app.get("/Codigo",function(req,res){
-	res.render("codigo");
+	res.render("Codigo");
 });
 

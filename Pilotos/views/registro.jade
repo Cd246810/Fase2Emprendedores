@@ -1,0 +1,47 @@
+html
+	head
+		title Ingresar
+		link(rel="stylesheet" href="/css/bootstrap.min.css")
+		link(rel="stylesheet" href="/css2/Login.css")
+		script(src="/js/jquery.min.js")
+		script(src="/js/bootstrap.min.js")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+
+	body
+		div(class="container")
+			div(class="text-center")
+				div(class="Cuerpo")
+					div(class="v-m")
+							h1 Se parte de nuestro Equipo
+							div(class="container")
+								form(action="/Registro" method="POST")
+									div(class="Salto")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="NombreUsuario") Nombre Completo:
+											input(type="text", name="NombreUsuario", class="form-control", placeholder="Nombre", id="NombreUsuario")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="Correo") DPI:
+											input(type="text", name="group",class="form-control", placeholder="Correo", id="group")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="Fecha") Fecha de nacimiento:
+											input(type="text", name="Fecha",class="form-control", placeholder="Fecha", id="Fecha")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="Contraseña") Contraseña:
+											input(type="password", name="Contraseña",class="form-control", placeholder="Contraseña", id="Contraseña")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="RepiteContraseña") Repite tu Contraseña:
+											input(type="password", name="RepiteContraseña",class="form-control", placeholder="Contraseña", id="RepiteContraseña")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="licencia") Numero de licencia:
+											input(type="text", name="licencia",class="form-control", placeholder="Numero", id="licencia")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="FechaVencimiento") Fecha de vencimiento:
+											input(type="text", name="FechaVencimiento",class="form-control", placeholder="Fecha", id="FechaVencimiento")
+									input(type="submit", name="registro",class="LlenarHorizontalmente",style="background-color:68B8AA;font-size:20;", class="btn", value="Registrar")
