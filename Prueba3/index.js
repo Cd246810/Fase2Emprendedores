@@ -9,12 +9,18 @@ var server = require('http').Server(app);  //Se le puedan hacer request .http
 var mysql = require('mysql');
 var connection = mysql.createConnection(
    {
-     host     : 'localhost',
+     host     : '192.168.0.189',
      user     : 'root',
      password : '52525',
      database : 'Seats',
    }
 );
+
+function getTime(){
+    var a = new Date();
+    var startTime = a.toJSON().replace(/T/, ' ').replace(/\..+/, '');
+    return startTime;
+}
 
 app.use(session({secret: 'ssshhhhh'})); //Sesion secreta
 
@@ -45,22 +51,34 @@ app.get("/Login",function(req,res){
 
 app.post('/Login', function (req, res) {
     req.session.user_id = "Admin";//Guardar dato en variable de sesion
-    var queryString = 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'';
-	console.log( 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'');
+    var queryString = 'SELECT count(*) as cantidad FROM client where email=\''+req.body.mail+'\' and pass=\''+req.body.pass+'\'';
+	console.log(queryString);
     connection.query(queryString, (err,rows) =>{
-        if(err) res.send(err);
+        if(err) console.log(err.message);
         else if(rows[0].cantidad>0){
-            	console.log("Ingresa");
-		res.render("menu");
+            console.log("Ingresa");
+            req.session.mail = req.body.mail;
+            req.session.entry = getTime();
+            queryString = 'INSERT INTO sesion_client(user,signin) values (\''+req.body.mail+'\',\''+req.session.entry+'\');';
+            console.log(queryString);
+            connection.query(queryString);
+            res.redirect("/Menu");
         }else{
-		console.log("No Ingresi");
+            console.log("No Ingresa");
             res.render("login");
         }
       });
 });
 
 app.get("/Cerrar",function(req,res){
-//aqui pone el codigo para determinar la hora en el cual finalizo
+    //aqui pone el codigo para determinar la hora en el cual finalizo
+    req.session.destroy(function(err) {
+        if(err) {
+        console.log(err.message);
+        } else {
+        res.redirect('/');
+        }
+    });
 	res.render("login");
 });
 
@@ -83,6 +101,7 @@ app.post("/Registro",function(req,res){
                 res.render('registro');
                 console.log(err.message);
             }else{
+
                 res.render('menu');
             }
         });
@@ -90,11 +109,12 @@ app.post("/Registro",function(req,res){
 });
 
 
+
 app.get("/Menu",function(req,res){
-	res.render("menu");
+    res.render("menu");
 });
 
-app.get("/Lugar",function(req,res){
+app.get("/Lugar",function(req,ras){
 	res.render("lugar");
 });
 
