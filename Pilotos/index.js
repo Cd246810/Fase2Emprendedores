@@ -27,7 +27,7 @@ server.listen(7071, function() {
 });
 
 app.get("/",function(req,res){
-	res.render("Registro");
+	res.render("registro");
 });
 
 
