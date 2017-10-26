@@ -14,22 +14,22 @@ html
 					div(class="v-m")
 							h1 Registrate!
 							div(class="container")
-								form(action="/Login" method="POST")
+								form(action="/Registro" method="POST")
 									div(class="Salto")
 									div(class="text-left")
 										div(class="form-group")
 											label(for="NombreUsuario") Nombre de Usuario:
-											input(type="text", name="NombreUsuario", class="form-control", placeholder="Nombre", id="NombreUsuario")
+											input(type="text", name="user", class="form-control", placeholder="Nombre", id="user")
 									div(class="text-left")
 										div(class="form-group")
 											label(for="Correo") Correo Electronico:
-											input(type="password", name="Correo",class="form-control", placeholder="Correo", id="Correo")
+											input(type="password", name="email",class="form-control", placeholder="Correo", id="email")
 									div(class="text-left")
 										div(class="form-group")
 											label(for="Contraseña") Contraseña:
-											input(type="password", name="Contraseña",class="form-control", placeholder="Contraseña", id="Contraseña")
+											input(type="password", name="pass",class="form-control", placeholder="Contraseña", id="pass")
 									div(class="text-left")
 										div(class="form-group")
 											label(for="RepiteContraseña") Repite tu Contraseña:
-											input(type="password", name="RepiteContraseña",class="form-control", placeholder="Contraseña", id="RepiteContraseña")
-									input(type="submit", name="login",class="LlenarHorizontalmente",style="background-color:68B8AA;font-size:20;", class="btn", value="Iniciar Sesion")
+											input(type="password", name="pass2",class="form-control", placeholder="Contraseña", id="pass2")
+									input(type="submit", name="registro",class="LlenarHorizontalmente",style="background-color:68B8AA;font-size:20;", class="btn", value="Registrar")

@@ -9,7 +9,7 @@ var server = require('http').Server(app);  //Se le puedan hacer request .http
 var mysql = require('mysql');
 var connection = mysql.createConnection(
    {
-     host     : '192.168.1.13',
+     host     : '192.168.0.189',
      user     : 'root',
      password : '52525',
      database : 'seats',
@@ -43,17 +43,50 @@ app.get("/Login",function(req,res){
 	res.render("login");
 });
 
+app.post('/Login', function (req, res) {
+    req.session.user_id = "Admin";//Guardar dato en variable de sesion
+    connection.connect();
+    var queryString = 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'';
+    connection.query(queryString, (err,rows) =>{
+        if(err) res.render('login');
+        else if(rows[0].cantidad>0){
+            res.render("menu");
+        }else{
+            res.render('login');
+        }
+      });
+});
+
 app.get("/Cerrar",function(req,res){
-
-
 	//aqui pone el codigo para determinar la hora en el cual finalizo
-
 	res.render("login");
 });
 
 app.get("/Registro",function(req,res){
 	res.render("registro");
 });
+
+app.post("/Registro",function(req,res){
+    console.log("entro a registro");
+    connection.connect();
+    var usuario = req.body.user;
+    var password = req.body.pass;
+    var email = req.body.email;
+    if(password != req.body.pass2){
+        res.render('registro');
+    }else{
+        var queryString = 'insert into client(user,email,pass) values (\''+usuario+'\',\''+email+'\',\''+password+'\');';
+        connection.query(queryString, (err,rows) =>{
+            if(err){
+                res.render('registro');
+                console.log(err.message);
+            }else{
+                res.render('menu');
+            }
+        });
+    }
+});
+
 
 app.get("/Menu",function(req,res){
 	res.render("menu");
@@ -67,17 +100,3 @@ app.get("/Codigo",function(req,res){
 	res.render("codigo");
 });
 
-app.post('/Login', function (req, res) {
-    req.session.user_id = "Admin";//Guardar dato en variable de sesion
-    connection.connect();
-    var queryString = 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'';
-    connection.query(queryString, (err,rows) =>{
-        if(err) throw err;
-        console.log(rows[0].cantidad);
-        // rows.forEach( (row) => { 
-        //     console.log(`Cuadraron: ${row.cantidad}`); 
-        //   });
-      });
-
-    res.render("login");
-});
