@@ -37,6 +37,14 @@ app.get("/Login",function(req,res){
 	res.render("login");
 });
 
+app.get("/Cerrar",function(req,res){
+
+
+	//aqui pone el codigo para determinar la hora en el cual finalizo
+
+	res.render("login");
+});
+
 app.get("/Registro",function(req,res){
 	res.render("registro");
 });
