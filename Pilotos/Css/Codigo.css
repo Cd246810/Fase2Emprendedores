@@ -1,0 +1,11 @@
+.Encabezado {height:5vh; display:table;width:100%; background-color: 68B8AA}
+.Arriba {height:10vh; display:table;width:100%; }
+.Medio {height:40vh; display:table;width:100%; }
+.Abajo {height:80vh; display:table;width:100%; }
+.img1 {
+  width: 100%;
+  border: 1px solid #000;
+}
+.cover {
+  object-fit: cover;
+}
