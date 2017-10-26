@@ -98,11 +98,10 @@ app.post("/Registro",function(req,res){
         var queryString = 'insert into client(user,email,pass) values (\''+usuario+'\',\''+email+'\',\''+password+'\');';
         connection.query(queryString, (err,rows) =>{
             if(err){
-                res.render('registro');
+                res.redirect("/Registro");
                 console.log(err.message);
             }else{
-
-                res.render('menu');
+                res.redirect("/Login");
             }
         });
     }
