@@ -33,8 +33,24 @@ app.get("/Login",function(req,res){
 	res.render("login");
 });
 
+app.get("/Login",function(req,res){
+	res.render("login");
+});
+
 app.get("/Registro",function(req,res){
 	res.render("registro");
+});
+
+app.get("/Menu",function(req,res){
+	res.render("menu");
+});
+
+app.get("/Lugar",function(req,res){
+	res.render("lugar");
+});
+
+app.get("/Codigo",function(req,res){
+	res.render("codigo");
 });
 
 app.post('/Login', function (req, res) {
