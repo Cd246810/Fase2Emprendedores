@@ -1,7 +1,7 @@
 var express=require("express");
 var session = require("express-session"); //Variabel de sesion
 var bodyParser=require("body-parser"); //Jalar Info del post
-var app=express(); 
+var app=express();
 var fs = require('fs'); //Jalar archivos
 var server = require('http').Server(app);  //Se le puedan hacer request .http
 //var io = require('socket.io')(server);   //Sockets
@@ -9,10 +9,10 @@ var server = require('http').Server(app);  //Se le puedan hacer request .http
 var mysql = require('mysql');
 var connection = mysql.createConnection(
    {
-     host     : '192.168.0.189',
+     host     : 'localhost',
      user     : 'root',
      password : '52525',
-     database : 'seats',
+     database : 'Seats',
    }
 );
 
@@ -31,7 +31,7 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redi
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/css2', express.static(__dirname + '/Css')); // redirect CSS bootstrap
 
-server.listen(7070, function() {  
+server.listen(7070, function() {
     console.log('Servidor corriendo en http://localhost:7070');
 });
 
@@ -45,20 +45,22 @@ app.get("/Login",function(req,res){
 
 app.post('/Login', function (req, res) {
     req.session.user_id = "Admin";//Guardar dato en variable de sesion
-    connection.connect();
     var queryString = 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'';
+	console.log( 'SELECT count(*) as cantidad FROM client where user=\''+req.body.user+'\' and pass=\''+req.body.pass+'\'');
     connection.query(queryString, (err,rows) =>{
-        if(err) res.render('login');
+        if(err) res.send(err);
         else if(rows[0].cantidad>0){
-            res.render("menu");
+            	console.log("Ingresa");
+		res.render("menu");
         }else{
-            res.render('login');
+		console.log("No Ingresi");
+            res.render("login");
         }
       });
 });
 
 app.get("/Cerrar",function(req,res){
-	//aqui pone el codigo para determinar la hora en el cual finalizo
+//aqui pone el codigo para determinar la hora en el cual finalizo
 	res.render("login");
 });
 
