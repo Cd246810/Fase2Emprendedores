@@ -99,6 +99,6 @@ app.get("/Lugar",function(req,res){
 });
 
 app.get("/Codigo",function(req,res){
-	res.render("codigo");
+	res.render("Codigo");
 });
 
