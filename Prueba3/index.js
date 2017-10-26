@@ -113,8 +113,8 @@ app.get("/Menu",function(req,res){
     res.render("menu");
 });
 
-app.get("/Lugar",function(req,ras){
-	res.render("lugar");
+app.get("/Lugar",function(req,res){
+	res.render("Lugar2");
 });
 
 app.get("/Codigo",function(req,res){
