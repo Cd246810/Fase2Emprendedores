@@ -1,7 +1,7 @@
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}
+.Cuerpo {height:80vh; display:table;width:100%;}
+.v-m {display:table-cell;vertical-align:middle}
+.LlenarCasiHorizontalmente{width:60%;}
+.LlenarHorizontalmente{width:100%;}
+.Salto{height:5vh;}
+.SaltoPeq{height:1vh;}
+.ColorAzul{background: };

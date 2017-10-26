@@ -8,12 +8,27 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 
 	body
-		div("container")
-			div(class="jumbotron vertical-center")
-				div("container")
-					div(class="jumbotron text-center")
-						h1 Login to Your Account
-						form(action="/Login" method="POST")
-							input(type="text" name="user" placeholder="Username", id="user")
-							input(type="password" name="pass" placeholder="Password", id="pass")
-							input(type="submit" name="login" value="Iniciar Sesion")
+		div(class="container")
+			div(class="text-center")
+				div(class="Cuerpo")
+					div(class="v-m")
+							h1 Ingresa al futuro
+							div(class="container")
+								form(action="/Login" method="POST")
+									div(class="Salto")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="user") Usuario:
+											input(type="text", name="user", class="form-control", placeholder="Username", id="Nombre")
+									div(class="text-left")
+										div(class="form-group")
+											label(for="Contra") Contraseña:
+											input(type="password", name="pass",class="form-control", placeholder="Password", id="Contra")
+									div(class="Salto")
+									div(class="Salto")
+									input(type="submit", name="login",class="LlenarHorizontalmente",style="background-color:68B8AA;font-size:20;", class="btn", value="Iniciar Sesion")
+									div(class="SaltoPeq")
+									div(class="SaltoPeq")
+									a(href="html_images.asp">HTML Images style="background-color:FFFFFF;font-size:15;") Olvidates tu contraseña?
+									div(class="SaltoPeq")
+									a(href="html_images.asp">HTML Images style="background-color:FFFFFF;font-size:15;") Aún no tienes cuenta?... Regístrate!
