@@ -33,6 +33,10 @@ app.get("/Login",function(req,res){
 	res.render("login");
 });
 
+app.get("/Registro",function(req,res){
+	res.render("registro");
+});
+
 app.post('/Login', function (req, res) {
     req.session.user_id = "Admin";//Guardar dato en variable de sesion
     console.log('Ingreso con: '+ req.body.user + req.body.pass );
