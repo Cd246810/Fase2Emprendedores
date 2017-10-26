@@ -9,7 +9,7 @@ var server = require('http').Server(app);  //Se le puedan hacer request .http
 var mysql = require('mysql');
 var connection = mysql.createConnection(
    {
-     host     : '192.168.0.189',
+     host     : 'localhost',
      user     : 'root',
      password : '52525',
      database : 'Seats',
@@ -58,8 +58,8 @@ app.post('/Login', function (req, res) {
         else if(rows[0].cantidad>0){
             console.log("Ingresa");
             req.session.mail = req.body.mail;
-            req.session.entry = getTime();
-            queryString = 'INSERT INTO sesion_client(user,signin) values (\''+req.body.mail+'\',\''+req.session.entry+'\');';
+            req.session.signin = getTime();
+            queryString = 'INSERT INTO sesion_client(user,signin) values (\''+req.body.mail+'\',\''+req.session.signin+'\');';
             console.log(queryString);
             connection.query(queryString);
             res.redirect("/Menu");
@@ -72,14 +72,15 @@ app.post('/Login', function (req, res) {
 
 app.get("/Cerrar",function(req,res){
     //aqui pone el codigo para determinar la hora en el cual finalizo
+    var queryString = "update sesion_client set signout = '"+getTime()+"' where user = '"+req.session.mail+"' and signin='"+req.session.signin+"'";
+    console.log(queryString);
+    connection.query(queryString);
     req.session.destroy(function(err) {
         if(err) {
-        console.log(err.message);
-        } else {
-        res.redirect('/');
+            console.log(err.message);
         }
     });
-	res.render("login");
+	res.redirect("/Login");
 });
 
 app.get("/Registro",function(req,res){
@@ -88,7 +89,6 @@ app.get("/Registro",function(req,res){
 
 app.post("/Registro",function(req,res){
     console.log("entro a registro");
-    connection.connect();
     var usuario = req.body.user;
     var password = req.body.pass;
     var email = req.body.email;
