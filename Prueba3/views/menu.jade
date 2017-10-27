@@ -1,0 +1,45 @@
+doctype html
+html(lang='en')
+  head
+    title Bootstrap Example
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  body
+    div(class="row")
+        div(class="col-md-3 col-xs-5")
+          div(class="text-center")
+            a(href="/Cerrar", style="display: inline") Cerrar Sesion
+            a(href="/Menu", style="display: inline") Menu
+    .container
+      ul.nav.nav-pills
+        li.active
+          a(data-toggle='pill', href='#home') Rutas
+        li
+          a(data-toggle='pill', href='#menu1') Reservas
+      .tab-content
+        #home.tab-pane.fade.in.active
+          h3 Rutas
+          .list-group
+            a.list-group-item(href='/lugar') Amatitlan
+            a.list-group-item(href='/lugar') Antigua Guatemala
+            a.list-group-item(href='/lugar') Chimaltenango
+            a.list-group-item(href='/lugar') Ciudad Quetzal
+        #menu1.tab-pane.fade
+          h3 Reservas
+            ul.list-group
+              li.list-group-item
+                | Antigua Guatemala
+                span.badge 26/10/2017
+              li.list-group-item
+                | Antigua Guatemala
+                span.badge 25/10/2017
+              li.list-group-item
+                | Antigua Guatemala
+                span.badge 24/10/2017
+              li.list-group-item
+                | Chimaltenango
+                span.badge 23/10/2017
+        
