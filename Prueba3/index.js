@@ -117,6 +117,10 @@ app.get("/Lugar",function(req,res){
 	res.render("Lugar2");
 });
 
+app.post("/Lugar",function(req,res){
+    res.render("Codigo");
+});
+
 app.get("/Codigo",function(req,res){
 	res.render("Codigo");
 });
